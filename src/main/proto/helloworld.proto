@@ -1,0 +1,56 @@
+syntax = "proto3";  
+
+package com.qqing.grpc;
+  
+option java_multiple_files = true;  
+option java_outer_classname = "HelloWorldProto";  
+option objc_class_prefix = "HLW";  
+  
+  
+  
+// The greeting service definition.  
+service Greeter {  
+  rpc HealthCheck (HealthCheckRequest) returns (HealthCheckResponse) {}
+  
+  rpc Ping (PingRequest) returns (PongResponse) {}
+  
+  // Sends a greeting
+  rpc StartJob (StartJobRequest) returns (StartJobResponse) {}
+  
+  // Sends a greeting  
+  rpc SayHello (HelloRequest) returns (HelloReply) {}  
+}  
+ 
+message HealthCheckRequest {}
+
+message HealthCheckResponse {
+	bool healthy = 1;
+}
+
+message PingRequest {}
+
+message PongResponse {
+	string msg = 1;
+}
+ 
+// The request message containing the user's name.
+message StartJobRequest {
+	string request_id = 1;
+}
+
+// The response message containing the greetings
+message StartJobResponse {
+	string ret_code = 1;
+  	string err_mssg = 2;
+  	int64  acceptedOperation = 3;
+}  
+
+// The request message containing the user's name.  
+message HelloRequest {  
+  string name = 1;  
+}
+  
+// The response message containing the greetings  
+message HelloReply {  
+  string message = 1;  
+} 
